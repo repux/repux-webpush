@@ -8,21 +8,27 @@
 npm install
 ```
 
+### Generate ssl certs
+```bash
+openssl req -newkey rsa:2048 -new -nodes -keyout key.pem -out csr.pem
+openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out server.crt
+```
+
 ### Run web serwer
 
-```sh
+```bash
 npm run server:dev
 ```
 
 ### Run demon (for watching blockchain events)
 
-```sh
+```bash
 npm run demon:dev
 ```
 
 ## Production setup.
 
-```sh
+```bash
 npm install
 npm run demon:start
 npm run server:start
@@ -35,7 +41,7 @@ npm run server:start
 
 Example request to server with subscription object:
 
-```sh
+```bash
 curl -X POST http://localhost:3000/register -H 'Content-Type: application/json' -d '{"address":"0xad8926fdb14c2ca283ab1e8a05c0b6707bc03f97", "subscription": {"endpoint":"https://fcm.googleapis.com/fcm/send/df-87fmapYM:APA91bGD64N_Zd3XekpsdE5S0QGPHTqnO3S-jhLWnw9tT1eqejH3tqaSIl71x7zhREizR_Uv1ll8g8zt1UgmRn3_ctqsgiGt49ufLjVR-Lac8Bliil7Fmm4HpN1r114Eetx8bgnjxPO0","expirationTime":null,"keys":{"p256dh":"BB5xZXao9sdI_caC2WC5e6u8PiaCrMPGzXqzoNGsUY8vmYnBIVmIAbfCRUoHutdP5Pc5m1YBICsHk2i6m801z5Q","auth":"0hCyjijw9vjWQlVBgp_FDw"}}}'
 ````
 
@@ -44,7 +50,7 @@ curl -X POST http://localhost:3000/register -H 'Content-Type: application/json' 
 To fire events you need to take all way from create product to approve. 
 Run in on ganache console.
 
-```sh
+```bash
 ganache-cli -s
 ```
 
