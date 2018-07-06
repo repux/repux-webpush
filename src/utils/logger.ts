@@ -6,7 +6,6 @@ const myFormat = winston.format.printf(info => {
 });
 
 const logPath = path.join(__dirname, './../../', 'logs');
-console.log(__dirname);
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.combine(

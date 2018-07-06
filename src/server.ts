@@ -26,11 +26,9 @@ mongoose.connect(config.mongodbUri).then(useSSL ? runHttpsServer : runHttpServer
   });
 
 function runHttpsServer() {
-
   const httpsConfig = {
     key: fs.readFileSync(config.ssl.keyPath),
-    cert: fs.readFileSync(config.ssl.certPath),
-    ca: fs.readFileSync(config.ssl.caPath)
+    cert: fs.readFileSync(config.ssl.certPath)
   };
   https.createServer(httpsConfig, app).listen(config.port, () => {
     logger.info(`Listening on https, port: ${config.port}, public key: ${config.webpush.publicKey}`);

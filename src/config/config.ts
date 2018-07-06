@@ -16,7 +16,6 @@ export default {
   },
   ssl: {
     keyPath: process.env.REPUX_WEBPUSH_SSL_KEY_PATH || './ssl/key.pem',
-    certPath: process.env.REPUX_WEBPUSH_SSL_CERT_PATH || './ssl/server.crt',
-    caPath: process.env.REPUX_WEBPUSH_SSL_CA_PATH || './ssl/csr.pem'
+    certPath: process.env.REPUX_WEBPUSH_SSL_CERT_PATH || './ssl/csr.pem'
   }
 }
