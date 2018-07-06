@@ -18,7 +18,12 @@ app.use(headers);
 app.use('/', IndexController);
 app.use('/register', RegisterController);
 
+const serverConfig = {
+  host: config.host,
+  port: config.port
+}
 const useSSL = config.protocol === 'https';
+
 mongoose.connect(config.mongodbUri).then(useSSL ? runHttpsServer : runHttpServer)
   .catch(err => {
     logger.error(err);
@@ -30,14 +35,14 @@ function runHttpsServer() {
     key: fs.readFileSync(config.ssl.keyPath),
     cert: fs.readFileSync(config.ssl.certPath)
   };
-  https.createServer(httpsConfig, app).listen(config.port, () => {
-    logger.info(`Listening on https, port: ${config.port}, public key: ${config.webpush.publicKey}`);
+  https.createServer(httpsConfig, app).listen(serverConfig, () => {
+    logger.info(`Listening on https://${config.host}:${config.port}, public key: ${config.webpush.publicKey}`);
   });
 }
 
 function runHttpServer() {
-  http.createServer(app).listen(config.port, () => {
-    logger.info(`Listening on http, port: ${config.port}, public key: ${config.webpush.publicKey}`);
+  http.createServer(app).listen(serverConfig, () => {
+    logger.info(`Listening on http://${config.host}:${config.port}, public key: ${config.webpush.publicKey}`);
   });
 }
 

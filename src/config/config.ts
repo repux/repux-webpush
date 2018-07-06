@@ -2,6 +2,7 @@ export default {
   env: process.env.REPUX_WEBPUSH_ENV || 'dev',
   protocol: process.env.REPUX_WEBPUSH_PROTOCOL || 'https',
   port: process.env.REPUX_WEBPUSH_PORT || '3000',
+  host: process.env.REPUX_WEBPUSH_HOST || 'localhost',
   mongodbUri: process.env.REPUX_WEBPUSH_MONGODB_URI || 'mongodb://localhost:27017/repux_webpush',
   accessControlAllowOrigin: process.env.REPUX_WEBPUSH_ALLOW_ORIGIN || '*',
   webpush: {
