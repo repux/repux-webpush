@@ -15,7 +15,7 @@ const logger = winston.createLogger({
     ),
     transports: [
         new winston.transports.File({
-            filename: path.join(logPath, 'log.log')
+            filename: path.join(logPath, 'combined.log')
         }),
         new winston.transports.Console()
     ]
