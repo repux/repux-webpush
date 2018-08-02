@@ -18,5 +18,11 @@ export default {
   ssl: {
     keyPath: process.env.REPUX_WEBPUSH_SSL_KEY_PATH || './ssl/key.pem',
     certPath: process.env.REPUX_WEBPUSH_SSL_CERT_PATH || './ssl/csr.pem'
+  },
+  gateway: {
+    auth: {
+      user: process.env.REPUX_WEBPUSH_GATEWAY_USER || '',
+      password: process.env.REPUX_WEBPUSH_GATEWAY_PASSWORD || '',
+    }
   }
 }
