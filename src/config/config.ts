@@ -12,8 +12,8 @@ export default {
   },
   ethereum: {
     host: process.env.REPUX_WEBPUSH_ETHEREUM_HOST || 'http://localhost:8545',
-    tokenAddress: process.env.REPUX_WEBPUSH_TOKEN_ADDRESS || '0x618231c15b548292abc0013da5e24bab350c86d2',
-    registryAddress: process.env.REPUX_WEBPUSH_REGISTRY_ADDRESS || '0x2980064b9a8872f219d4c05e0765b5288a495b23'
+    tokenAddress: process.env.REPUX_WEBPUSH_TOKEN_ADDRESS || '0xbd83c21e6f0a9547abe908c6faa02a55512d57b4',
+    registryAddress: process.env.REPUX_WEBPUSH_REGISTRY_ADDRESS || '0x0fe6a11f60c62e8f2a1b2d6b0c12133e4616fe7a'
   },
   ssl: {
     keyPath: process.env.REPUX_WEBPUSH_SSL_KEY_PATH || './ssl/key.pem',

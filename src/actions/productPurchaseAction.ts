@@ -17,7 +17,7 @@ export default async (dataProductAddress: string, sender: string) => {
       const data = JSON.parse(subscription.body);
       sendNotification(data, messages.purchaseNotification)
         .then(() => {
-          logger.info(`Purchase notification send to: ${sellerAddress} for product: ${dataProductAddress}`);
+          logger.info(`[notification][purchase] send to: ${sellerAddress} for product: ${dataProductAddress}`);
         })
     })
   });

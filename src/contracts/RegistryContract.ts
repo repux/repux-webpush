@@ -8,9 +8,9 @@ export default class RegistryContract extends EventEmitter {
     static EVENT_ACTION_UPDATE: string = '1';
     static EVENT_ACTION_DELETE: string = '2';
     static EVENT_ACTION_PURCHASE: string = '3';
-    static EVENT_ACTION_APPROVE: string = '4';
-    static EVENT_ACTION_RATE: string = '5';
-    static EVENT_ACTION_CANCEL_RATING: string = '6';
+    static EVENT_ACTION_CANCEL_PURCHASE: string = '4';
+    static EVENT_ACTION_FINALISE: string = '5';
+    static EVENT_ACTION_RATE: string = '6';
 
     private contract: any;
     private address: string;
