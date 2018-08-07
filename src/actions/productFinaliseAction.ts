@@ -14,7 +14,7 @@ export default (dataProductAddress: string, sender: string) => {
       const data = JSON.parse(subscription.body);
       sendNotification(data, messages.approveNotification);
 
-      logger.info(`Approve notification send to: ${sender} for product: ${dataProductAddress}`);
+      logger.info(`[notification][finalise] send to: ${sender} for product: ${dataProductAddress}`);
 
     })
   });
