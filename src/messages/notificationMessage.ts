@@ -1,10 +1,43 @@
 export default {
-    approveNotification: {
-        title: `Hey buyer!`,
-        msg: `Seller has finalised process. You can download file.`
+    finaliseNotification: (productAddress: string, productTitle: string) => {
+        return {
+            data: {
+                productAddress,
+                type: 'finalise'
+            },
+            title: `Confirmed transaction`,
+            msg: `Your file ${productTitle} is ready to download from RepuX.`,
+            actions: [
+                {
+                    action: 'download',
+                    title: 'Download'
+                }
+            ]
+        };
     },
-    purchaseNotification: {
-        title: `Hey seller!`,
-        msg: `Someone has purchased your product. Go and approve it.`
+    purchaseNotification: (productAddress: string, productTitle: string) => {
+        return {
+            data: {
+                productAddress,
+                type: 'purchase'
+            },
+            title: `Confirmed transaction`,
+            msg: `Your file ${productTitle} was just bought on RepuX. Click here to finalise it.`,
+            actions: [
+                {
+                    action: 'finalise',
+                    title: 'Finalise'
+                }
+            ]
+        };
+    },
+    welcomeNotification: () => {
+        return {
+            data: {
+                type: 'welcome'
+            },
+            title: 'RepuX Data Marketplace',
+            msg: 'Thanks for subscribing!'
+        }
     }
 }

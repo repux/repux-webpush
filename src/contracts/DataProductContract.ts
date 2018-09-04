@@ -19,4 +19,9 @@ export default class DataProductContract {
         let contract = await this.contract.at(this.address);
         return await contract.owner.call() as string;
     }
+
+    public async sellerMetaHash(): Promise<string> {
+        let contract = await this.contract.at(this.address);
+        return await contract.sellerMetaHash.call() as string;
+    }
 }
