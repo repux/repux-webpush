@@ -7,10 +7,23 @@ const router: Router = Router();
 
 router.post('/', async (request: Request, response: Response) => {
 
-    let subscription = new SubscriptionModel({
+    const subscriptionObject = {
         address: request.body.address,
         body: JSON.stringify(request.body.subscription)
-    }) as SubscriptionModelType;
+    };
+    const subscription = new SubscriptionModel(subscriptionObject) as SubscriptionModelType;
+
+    const foundSubscription = await new Promise<Document>(resolve => {
+        SubscriptionModel.findOne(subscriptionObject, (err, subscription) => {
+             resolve(<any> subscription);
+        });
+    });
+
+    if (foundSubscription) {
+        return response
+            .status(HttpStatus.OK)
+            .send();
+    }
 
     //@TODO add validation: const errors = subscription.validateSync();
     let isSuccess = true;

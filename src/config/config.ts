@@ -24,5 +24,9 @@ export default {
       user: process.env.REPUX_WEBPUSH_GATEWAY_USER || '',
       password: process.env.REPUX_WEBPUSH_GATEWAY_PASSWORD || '',
     }
+  },
+  ipfs: {
+    httpUrl: process.env.REPUX_WEBPUSH_IPFS_HTTP_URL || 'http://repux-ipfs:8080',
+    requestTimeoutMs: 5000
   }
 }
