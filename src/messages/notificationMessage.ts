@@ -30,5 +30,14 @@ export default {
                 }
             ]
         };
+    },
+    welcomeNotification: () => {
+        return {
+            data: {
+                type: 'welcome'
+            },
+            title: 'RepuX Data Marketplace',
+            msg: 'Thanks for subscribing!'
+        }
     }
 }

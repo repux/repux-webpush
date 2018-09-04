@@ -2,6 +2,8 @@ import logger from './../utils/logger';
 import { Router, Request, Response } from 'express';
 import HttpStatus from 'http-status-codes';
 import SubscriptionModel, { SubscriptionModelType } from './../models/SubscriptionModel';
+import sendNotification from '../services/sendNotification';
+import messages from '../messages/notificationMessage';
 
 const router: Router = Router();
 
@@ -15,6 +17,11 @@ router.post('/', async (request: Request, response: Response) => {
 
     const foundSubscription = await new Promise<Document>(resolve => {
         SubscriptionModel.findOne(subscriptionObject, (err, subscription) => {
+             if (err) {
+                 resolve();
+                 return;
+             }
+
              resolve(<any> subscription);
         });
     });
@@ -35,6 +42,10 @@ router.post('/', async (request: Request, response: Response) => {
             logger.error(`Mongoose error: ${err.message}`, err);
             isSuccess = false;
         });
+    
+    const data = JSON.parse(subscription.body);
+    sendNotification(data, messages.welcomeNotification());
+    logger.info(`[notification][welcome] send to: ${subscription.address}`);
 
     return response
         .status(isSuccess ? HttpStatus.OK : HttpStatus.UNPROCESSABLE_ENTITY)
